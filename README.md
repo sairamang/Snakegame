@@ -5,3 +5,4 @@ Avoid external libs to be used , as it is so confusing for you.
 ####Version 1.0#####
 Added Snake object
 ####Version 1.1#####
+Added OpenGL Triangle 
