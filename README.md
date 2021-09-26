@@ -8,3 +8,5 @@ Added Snake object
 Added OpenGL Triangle 
 ####Version 1.2#####
 Added Dynamic Change of Triangle shape
+####Version 1.3#####
+Added Size change of Triangle
