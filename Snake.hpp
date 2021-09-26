@@ -1,6 +1,7 @@
 #include<iostream>
 #include "GL/freeglut.h"
 #include "GL/gl.h"
+#include "unistd.h"
 using namespace std;
 class Snake
 {
@@ -15,4 +16,6 @@ class Snake
         void OpenGLInit();
         //Testing by drawing a Triangle First
         static void OpenGLTestTriangle();
+        //Snake game function
+        static void SnakegameOpenGL();
 };

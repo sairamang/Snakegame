@@ -6,3 +6,5 @@ Avoid external libs to be used , as it is so confusing for you.
 Added Snake object
 ####Version 1.1#####
 Added OpenGL Triangle 
+####Version 1.2#####
+Added Dynamic Change of Triangle shape
