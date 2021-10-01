@@ -10,3 +10,5 @@ Added OpenGL Triangle
 Added Dynamic Change of Triangle shape
 ####Version 1.3#####
 Added Size change of Triangle
+####Version 1.4#####
+Added Dynamic change of vertices of Triangle
