@@ -1,33 +1,121 @@
 // Programmer: Sai Raman Gowthaman
 // Date: Saturday Sep 25 2021
 #include "Snake.hpp"
+#include <cstdlib>
+#include <pthread.h>
+#include <unistd.h>
+#define X_POSITION 0.2
+#define Y_POSITION 0.2
+#define Z_POSITION 0
+#define NO_OF_ENTRIES 20
+float Vertices[NO_OF_ENTRIES][9]={0};
+
+char endchoice;
+void VerticeHandler();
+void VerticeUpdater();
+void safeexit()
+{
+    cout<<"Press 'y' to exit "<< endl;
+    cin>>endchoice;  
+    if(endchoice == 'y')
+    {
+        cout<<"Exiting the Application !!! "<<endl;
+        exit(0);
+    }
+
+}
+void PostDisplay()
+{
+    glutPostRedisplay();
+}
+void* TimerRun(void*)
+{
+    int i=1;
+    cout<<"Timer Run Start "<<endl;
+    while(i<=NO_OF_ENTRIES)
+    {
+        sleep(1);
+        VerticeHandler();
+        i++;
+    }
+    pthread_exit(NULL);
+}
+void VerticeHandler()
+{
+    cout<<"Vertice Handler called"<<endl;
+    static int index=0;
+    float a1,a2,a3,b1,b2,b3,c1,c2,c3;
+    a1=Vertices[index][0];
+    b1=Vertices[index][1];
+    c1=Vertices[index][2];
+    a2=Vertices[index][3];
+    b2=Vertices[index][4];
+    c2=Vertices[index][5];
+    a3=Vertices[index][6];
+    b3=Vertices[index][7];
+    c3=Vertices[index][8];
+    SetVertices(a1,b1,c1,a2,b2,c2,a3,b3,c3);
+    glutDisplayFunc(Snake::SnakegameOpenGL);
+    index++;
+}
+void VerticeUpdater()
+{
+    float incr=0;
+    int i,j;
+    int row=0;
+    row=NO_OF_ENTRIES;
+    cout<<"Total no of row "<<row<<endl;
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<10;j++)
+        {
+            if(j==2 || j==5 ||j==8)
+                Vertices[i][j]=Z_POSITION;
+            if(j==0 || j == 3 )
+                Vertices[i][j]=(-X_POSITION)+incr;
+            if(j==1)
+                Vertices[i][j]=-Y_POSITION;
+            if(j == 4)
+                Vertices[i][j]=Y_POSITION;
+            if(j==6)
+                Vertices[i][j]=X_POSITION+incr;
+            if(j==7)
+                Vertices[i][j]=0;            
+        }
+        incr=incr+0.1;
+    }
+}
+void PrintVertices()
+{
+    int i,j;
+    for(i=0;i<NO_OF_ENTRIES;i++)
+    {
+        for(j=0;j<9;j++)
+        {
+            cout<<"Value at i: "<<i<<"Value at j: "<<j<<" "<<Vertices[i][j]<<endl;
+        }
+    }
+}
 int main(int argc, char **argv)
 {
-    char start_choice,end_choice;
-    int verticechoice;
+    int rc;    
+    pthread_t Timer_Sec[1];
+    rc =pthread_create(&Timer_Sec[0],NULL,&TimerRun,NULL);
+    if(rc)
+    {
+        cout<<"Thread created failed !!!"<<endl;
+        cout<<"Exiting !!!"<<endl;
+        exit(0);
+    }
     cout<<"Welcome to my Game"<<endl;
     cout<<"Starting a New Game"<<endl;
+    VerticeUpdater();
+    //PrintVertices();
     Snake s;
     glutInit(&argc,argv);
     s.Play();
     s.OpenGLInit();
-    cout<<"Enter choice 1 or 2"<<endl;
-    cin>>verticechoice;
-    if(verticechoice ==0)
-    {
-        SetVertices(0.7, 0.7,0,0,0.7,0,0,-1,0);
-        glutDisplayFunc(Snake::SnakegameOpenGL);
-    }
-    if(verticechoice == 1)
-    {
-        SetVertices(-0.7, 0.7,0,0,0.7,0,0,-1,0);
-        glutDisplayFunc(Snake::SnakegameOpenGL);
-    }
+    glutIdleFunc(PostDisplay);
     glutMainLoop();
-    cout<<"Press 'y' to exit "<< endl;
-    while(end_choice != 'y' )
-    {
-        cin>>end_choice;  
-    };
     return 0;
 }

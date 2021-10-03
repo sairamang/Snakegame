@@ -9,4 +9,4 @@ set(HEADER_FILES Snake.hpp)
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(snakegame ${SOURCE_FILES} ${HEADER_FILES})
 #Linking OpenGLLibs
-target_link_libraries(snakegame glut GL)
+target_link_libraries(snakegame glut GL pthread)
