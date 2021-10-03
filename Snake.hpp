@@ -19,4 +19,8 @@ class Snake
         //Snake game function
         static void SnakegameOpenGL();
 };
+//To get Keyboard Characters
+void KeyBoardInput(unsigned char key,int x,int y);
+//To get Arrow Input
+void ArrowInput(int key,int x,int y);
 void SetVertices(float A1,float B1,float C1,float A2,float B2,float C2,float A3,float B3,float C3);

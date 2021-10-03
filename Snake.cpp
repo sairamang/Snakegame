@@ -19,6 +19,8 @@ void Snake::OpenGLInit()
     glutInitDisplayMode(GLUT_SINGLE);
     glutInitWindowPosition(300, 300);
     glutCreateWindow("Snake Game V1.0");
+    glutKeyboardFunc(KeyBoardInput);
+    glutSpecialFunc(ArrowInput);
 }
 
 void Snake::OpenGLTestTriangle()
@@ -80,3 +82,25 @@ void Snake::SnakegameOpenGL()
     }
 }
 
+void KeyBoardInput(unsigned char key,int x,int y)
+{
+    cout<<"Key Value : "<<key<<endl;
+    switch(key)
+    {
+        case 'w':cout<<"W  Key Pressed"<<endl;break;
+        case 'a':cout<<"A Key Pressed"<<endl;break;
+        case 's':cout<<"S Key Pressed"<<endl;break;
+        case 'd':cout<<"D Key Pressed"<<endl;break;
+    }
+}
+void ArrowInput(int key,int x , int y)
+{
+    cout<<"Arrow Input key Value : "<<key<<endl;
+    switch(key)
+    {
+        case GLUT_KEY_UP:cout<<"Up Key Pressed"<<endl;break;
+        case GLUT_KEY_DOWN:cout<<"Down Key Pressed"<<endl;break;
+        case GLUT_KEY_LEFT:cout<<"Left Key Pressed"<<endl;break;
+        case GLUT_KEY_RIGHT:cout<<"Right Key Pressed"<<endl;break;
+    }
+}

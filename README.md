@@ -18,3 +18,5 @@ Added Timer based Movement of Triangle
 Added Color for Triangle
 ####Version 1.7#####
 Added SupportFunc.cpp and SupportFunc.hpp
+####Version 1.8#####
+Added Arrow Keys for getting Input
