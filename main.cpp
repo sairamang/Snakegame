@@ -4,9 +4,10 @@
 #include <cstdlib>
 #include <pthread.h>
 #include <unistd.h>
-#define X_POSITION 0.2
-#define Y_POSITION 0.2
+#define X_POSITION -0.95
+#define Y_POSITION 0.05
 #define Z_POSITION 0
+#define WIDTH 0.05
 #define NO_OF_ENTRIES 20
 float Vertices[NO_OF_ENTRIES][9]={0};
 
@@ -72,30 +73,20 @@ void VerticeUpdater()
             if(j==2 || j==5 ||j==8)
                 Vertices[i][j]=Z_POSITION;
             if(j==0 || j == 3 )
-                Vertices[i][j]=(-X_POSITION)+incr;
+                Vertices[i][j]=(X_POSITION)+incr;
             if(j==1)
                 Vertices[i][j]=-Y_POSITION;
             if(j == 4)
                 Vertices[i][j]=Y_POSITION;
             if(j==6)
-                Vertices[i][j]=X_POSITION+incr;
+                Vertices[i][j]=X_POSITION+WIDTH+incr;
             if(j==7)
                 Vertices[i][j]=0;            
         }
         incr=incr+0.1;
     }
 }
-void PrintVertices()
-{
-    int i,j;
-    for(i=0;i<NO_OF_ENTRIES;i++)
-    {
-        for(j=0;j<9;j++)
-        {
-            cout<<"Value at i: "<<i<<"Value at j: "<<j<<" "<<Vertices[i][j]<<endl;
-        }
-    }
-}
+
 int main(int argc, char **argv)
 {
     int rc;    
@@ -110,7 +101,6 @@ int main(int argc, char **argv)
     cout<<"Welcome to my Game"<<endl;
     cout<<"Starting a New Game"<<endl;
     VerticeUpdater();
-    //PrintVertices();
     Snake s;
     glutInit(&argc,argv);
     s.Play();

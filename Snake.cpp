@@ -17,7 +17,7 @@ void Snake::OpenGLInit()
 {
     cout<<"Open  GL Initialized"<< endl;
     glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowPosition(100, 100);
+    glutInitWindowPosition(300, 300);
     glutCreateWindow("Snake Game V1.0");
 }
 
@@ -64,7 +64,7 @@ void Snake::SnakegameOpenGL()
     {
         glClearColor(0.4, 0.4, 0.4, 0.4); // Sets the Background color.
         glClear(GL_COLOR_BUFFER_BIT); //Enabled for Color writing
-        glColor3f(1.0, 1.0, 1.0); //Sets the Component Color
+        glColor3f(1.0, 0, 0); //Sets the Component Color
         glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0); //left,right,bottom,top,zNear,zFar
         glBegin(GL_TRIANGLES);// Vertex is understood as triangle.For each N vertex , N/3 triangle is drawn
         glVertex3f(a1,b1,c1);

@@ -14,3 +14,5 @@ Added Size change of Triangle
 Added Dynamic change of vertices of Triangle
 ####Version 1.5#####
 Added Timer based Movement of Triangle
+####Version 1.6#####
+Added Color for Triangle
