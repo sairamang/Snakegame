@@ -20,3 +20,5 @@ Added Color for Triangle
 Added SupportFunc.cpp and SupportFunc.hpp
 ####Version 1.8#####
 Added Arrow Keys for getting Input
+####Version 1.9#####
+Added Change of Direction based on Keyboard Input

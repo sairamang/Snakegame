@@ -18,7 +18,6 @@ int main(int argc, char **argv)
     }
     cout<<"Welcome to my Game"<<endl;
     cout<<"Starting a New Game"<<endl;
-    VerticeUpdater();
     Snake s;
     glutInit(&argc,argv);
     s.Play();

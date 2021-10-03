@@ -1,6 +1,7 @@
 #include "Snake.hpp"
 float a1,b1,c1,a2,b2,c2,a3,b3,c3;
 bool isverticesset=false;
+
 Snake::Snake()
 {
     cout<<"New Game Started"<<endl;
@@ -87,10 +88,14 @@ void KeyBoardInput(unsigned char key,int x,int y)
     cout<<"Key Value : "<<key<<endl;
     switch(key)
     {
-        case 'w':cout<<"W  Key Pressed"<<endl;break;
+        case 'w':cout<<"W Key Pressed"<<endl;break;
         case 'a':cout<<"A Key Pressed"<<endl;break;
         case 's':cout<<"S Key Pressed"<<endl;break;
         case 'd':cout<<"D Key Pressed"<<endl;break;
+        case 'r':
+        {
+            GameRestart();
+        }
     }
 }
 void ArrowInput(int key,int x , int y)
@@ -98,9 +103,38 @@ void ArrowInput(int key,int x , int y)
     cout<<"Arrow Input key Value : "<<key<<endl;
     switch(key)
     {
-        case GLUT_KEY_UP:cout<<"Up Key Pressed"<<endl;break;
-        case GLUT_KEY_DOWN:cout<<"Down Key Pressed"<<endl;break;
-        case GLUT_KEY_LEFT:cout<<"Left Key Pressed"<<endl;break;
-        case GLUT_KEY_RIGHT:cout<<"Right Key Pressed"<<endl;break;
+        case GLUT_KEY_UP:
+        {
+            cout<<"Up Key Pressed"<<endl;
+            x_position=X_POSITION*-1;
+            y_position=Y_POSITION*-1;
+            VerticeUpdater(0);
+            break;
+        }
+        case GLUT_KEY_DOWN:
+        {
+            cout<<"Down Key Pressed"<<endl;
+            x_position=X_POSITION*-1;
+            y_position=Y_POSITION*-1;
+            VerticeUpdater(1);
+            break;
+        }
+        case GLUT_KEY_LEFT:
+        {
+            cout<<"Left Key Pressed"<<endl;
+            x_position=X_POSITION;
+            y_position=Y_POSITION;
+            VerticeUpdater(2);
+            break;
+        }
+        case GLUT_KEY_RIGHT:
+        {
+            cout<<"Right Key Pressed"<<endl;
+            x_position=X_POSITION*-1;
+            y_position=Y_POSITION;
+            Getx_position();
+            VerticeUpdater(3);
+            break;
+        }
     }
 }

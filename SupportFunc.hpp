@@ -2,14 +2,15 @@
 #include <unistd.h>
 #include <cstdlib>
 #include "Snake.hpp"
-#define X_POSITION -0.95
-#define Y_POSITION 0.05
-#define Z_POSITION 0
-#define WIDTH 0.05
-#define NO_OF_ENTRIES 20
 void VerticeHandler();
-void VerticeUpdater();
+void VerticeUpdater(int direction);
+void VerticeUpdater_Up();
+void VerticeUpdater_Down();
+void VerticeUpdater_Left();
+void VerticeUpdater_Right();
 void PostDisplay();
 void* TimerRun(void*);
+void GameRestart();
+void Getx_position();
 
 using namespace std;
