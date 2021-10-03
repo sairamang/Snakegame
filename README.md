@@ -16,3 +16,5 @@ Added Dynamic change of vertices of Triangle
 Added Timer based Movement of Triangle
 ####Version 1.6#####
 Added Color for Triangle
+####Version 1.7#####
+Added SupportFunc.cpp and SupportFunc.hpp
