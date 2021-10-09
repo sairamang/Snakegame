@@ -1,4 +1,5 @@
 #include "SupportFunc.hpp"
+int current_direction;
 float Vertices[NO_OF_ENTRIES][9]={0};
 char endchoice;
 int Timercount=0;
@@ -24,7 +25,7 @@ void* TimerRun(void*)
     cout<<"Timer Run Start "<<endl;
     while(Timercount<=NO_OF_ENTRIES)
     {
-        sleep(1);
+        usleep(500000);
         VerticeHandler();
         Timercount++;
     }
@@ -80,146 +81,184 @@ void VerticeUpdater(int direction)
 void VerticeUpdater_Up()
 {
     int i,j;
-    int row=0;
-    row=NO_OF_ENTRIES;
-    for(i=index;i<row;i++)
+ 
+    for(i=index;i<NO_OF_ENTRIES;i++)
     {
         for(j=0;j<10;j++)
         {
-            if(j==2 || j==5 ||j==8)
-                Vertices[i][j]=Z_POSITION;
+            if(j==2 || j ==5 || j == 8)
+            {
+                Vertices[i][j] = Z_POSITION;
+            }
             if(j==0)
             {
-                Vertices[i][j]=x_position;
-            }
-            if(j==3)
-            {
-                Vertices[i][j]=x_position+BASE;
+                Vertices[i][j] = x_position;
             }
             if(j==1)
-                Vertices[i][j]=y_position;
-            if(j == 4)
-                Vertices[i][j]=y_position;
+            {
+                Vertices[i][j] = y_position;
+            }
+
+            if(j==3)
+            {
+                Vertices[i][j] = x_position+BASE;
+            }
+            if(j==4)
+            {
+                Vertices[i][j]= y_position;
+            }
             if(j==6)
             {
-                Vertices[i][j]=x_position+(BASE/2);
+                Vertices[i][j]= x_position+(BASE/2);
             }
             if(j==7)
-                Vertices[i][j]=y_position+HEIGHT;            
+            {
+                Vertices[i][j] = y_position + HEIGHT;
+            }
         }
-        y_position+=0.1;
+        y_position=y_position+0.05;
     }
-
 }
 void VerticeUpdater_Down()
 {
     int i,j;
-    int row=0;
-    row=NO_OF_ENTRIES;
-    for(i=index;i<row;i++)
+    for(i=index;i<NO_OF_ENTRIES;i++)
     {
         for(j=0;j<10;j++)
         {
-            if(j==2 || j==5 ||j==8)
-                Vertices[i][j]=Z_POSITION;
+            if(j==2 || j ==5 || j == 8)
+            {
+                Vertices[i][j] = Z_POSITION;
+            }
             if(j==0)
             {
-                Vertices[i][j]=x_position;
-            }
-            if(j==3)
-            {
-                Vertices[i][j]=x_position+BASE;
+                Vertices[i][j] = x_position;
             }
             if(j==1)
-                Vertices[i][j]=y_position;
-            if(j == 4)
-                Vertices[i][j]=y_position;
+            {
+                Vertices[i][j] = y_position;
+            }
+
+            if(j==3)
+            {
+                Vertices[i][j] = x_position+BASE;
+            }
+            if(j==4)
+            {
+                Vertices[i][j]= y_position;
+            }
             if(j==6)
             {
-                Vertices[i][j]=x_position+(BASE/2);
+                Vertices[i][j]= x_position+(BASE/2);
             }
             if(j==7)
-                Vertices[i][j]=y_position-HEIGHT;            
+            {
+                Vertices[i][j] = y_position - HEIGHT;
+            }
         }
-        y_position-=0.1;
+        y_position=y_position-0.05;
     }
 }
 
 void VerticeUpdater_Left()
 {
     int i,j;
-    int row=0;
-    row=NO_OF_ENTRIES;
-    for(i=index;i<row;i++)
+
+    for(i=index;i<NO_OF_ENTRIES;i++)
     {
         for(j=0;j<10;j++)
         {
-            if(j==2 || j==5 ||j==8)
+            if(j==2||j==5||j==8)
+            {
                 Vertices[i][j]=Z_POSITION;
-            if(j==0 || j == 3 )
+            }
+            if(j==0)
             {
                 Vertices[i][j]=x_position;
             }
             if(j==1)
-                Vertices[i][j]=-Y_POSITION;
-            if(j == 4)
-                Vertices[i][j]=Y_POSITION;
+            {
+                Vertices[i][j]=y_position;
+            }
+            if(j==3)
+            {
+                Vertices[i][j]=x_position;
+            }
+            if(j==4)
+            {
+                Vertices[i][j]=y_position+BASE;
+            }
             if(j==6)
             {
                 Vertices[i][j]=x_position-HEIGHT;
             }
             if(j==7)
-                Vertices[i][j]=0;            
+            {
+                Vertices[i][j]=y_position+(BASE/2);
+            }
         }
-        x_position-=0.1;
+        x_position=x_position -0.05;
     }
 }
 
 void VerticeUpdater_Right()
 {
-    int i,j;
-    int row=0;
-    row=NO_OF_ENTRIES;
-    for(i=index;i<row;i++)
-    {
-        for(j=0;j<10;j++)
-        {
-            if(j==2 || j==5 ||j==8)
-                Vertices[i][j]=Z_POSITION;
-            if(j==0 || j == 3 )
-            {
-                Vertices[i][j]=x_position;
-            }
-            if(j==1)
-                Vertices[i][j]=-Y_POSITION;
-            if(j == 4)
-                Vertices[i][j]=Y_POSITION;
-            if(j==6)
-            {
-                Vertices[i][j]=x_position+HEIGHT;
-            }
-            if(j==7)
-                Vertices[i][j]=0;            
-        }
-        x_position+=0.1;
-    }
+   int i,j;
+   for(i=index;i<NO_OF_ENTRIES;i++)
+   {
+       for(j=0;j<10;j++)
+       {
+           if(j==2||j==5||j==8)
+           {
+               Vertices[i][j]=Z_POSITION;
+           }
+           if(j==0)
+           {
+               Vertices[i][j]=x_position;
+           }
+           if(j==1)
+           {
+               Vertices[i][j]=y_position;
+           }
+           if(j==3)
+           {
+               Vertices[i][j]=x_position;
+           }
+           if(j==4)
+           {
+               Vertices[i][j]=y_position+BASE;
+           }
+           if(j==6)
+           {
+               Vertices[i][j]=x_position+HEIGHT;
+           }
+           if(j==7)
+           {
+               Vertices[i][j]=y_position+(BASE/2);
+           }
+       }
+         x_position=x_position+0.05;
+   }
 }
 void GameRestart()
 {
     cout<<"Restart the Game"<<endl;
-    x_position=X_POSITION*-1;
-    y_position=Y_POSITION;
     VerticeUpdater(3);
     Timercount=0;
-    Getx_position();
 }
-void Getx_position()
+float Getx_position()
 {
+    float temp;
     cout<<"Getx_position index : "<<index<<endl;
     cout<<"Get X_Position , x_position:"<<Vertices[index][0]<<endl;
+    temp=Vertices[index][0];
+    return temp;
 }
-void Gety_position()
+float Gety_position()
 {
+    float temp;
     cout<<"Gety_position index : "<<index<<endl;
-    cout<<"Get X_Position , y_position:"<<Vertices[index][0]<<endl;
+    cout<<"Get X_Position , y_position:"<<Vertices[index][1]<<endl;
+    temp=Vertices[index][1];
+    return temp;
 }

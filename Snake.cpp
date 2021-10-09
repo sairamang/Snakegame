@@ -1,4 +1,5 @@
 #include "Snake.hpp"
+extern int current_direction;
 float a1,b1,c1,a2,b2,c2,a3,b3,c3;
 bool isverticesset=false;
 
@@ -94,46 +95,51 @@ void KeyBoardInput(unsigned char key,int x,int y)
         case 'd':cout<<"D Key Pressed"<<endl;break;
         case 'r':
         {
+            current_direction=3;
             GameRestart();
         }
     }
 }
 void ArrowInput(int key,int x , int y)
 {
+    float x_offset,y_offset;
     cout<<"Arrow Input key Value : "<<key<<endl;
     switch(key)
     {
         case GLUT_KEY_UP:
         {
             cout<<"Up Key Pressed"<<endl;
-            x_position=X_POSITION*-1;
-            y_position=Y_POSITION*-1;
+            x_position=Getx_position();
+            y_position=Gety_position();
             VerticeUpdater(0);
+            current_direction=0;
             break;
         }
         case GLUT_KEY_DOWN:
         {
             cout<<"Down Key Pressed"<<endl;
-            x_position=X_POSITION*-1;
-            y_position=Y_POSITION*-1;
+            x_position=Getx_position();
+            y_position=Gety_position();
             VerticeUpdater(1);
+            current_direction=1;
             break;
         }
         case GLUT_KEY_LEFT:
         {
             cout<<"Left Key Pressed"<<endl;
-            x_position=X_POSITION;
-            y_position=Y_POSITION;
+            x_position=Getx_position();
+            y_position=Gety_position();
             VerticeUpdater(2);
+            current_direction=2;
             break;
         }
         case GLUT_KEY_RIGHT:
         {
             cout<<"Right Key Pressed"<<endl;
-            x_position=X_POSITION*-1;
-            y_position=Y_POSITION;
-            Getx_position();
+            x_position=Getx_position();
+            y_position=Gety_position();
             VerticeUpdater(3);
+            current_direction=3;
             break;
         }
     }

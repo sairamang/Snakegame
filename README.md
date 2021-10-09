@@ -22,3 +22,5 @@ Added SupportFunc.cpp and SupportFunc.hpp
 Added Arrow Keys for getting Input
 ####Version 1.9#####
 Added Change of Direction based on Keyboard Input
+####Version 1.10####
+Added a Complete GamePlay with increased Speed as well
