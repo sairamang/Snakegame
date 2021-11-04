@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include "Snake.hpp"
+extern bool isverticesset;
 void VerticeHandler();
 void VerticeUpdater(int direction);
 void VerticeUpdater_Up();

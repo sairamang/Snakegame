@@ -24,3 +24,5 @@ Added Arrow Keys for getting Input
 Added Change of Direction based on Keyboard Input
 ####Version 1.10####
 Added a Complete GamePlay with increased Speed as well
+####Version 1.11####
+Added Points Bar with 7 segment Display 

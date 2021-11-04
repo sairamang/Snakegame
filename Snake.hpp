@@ -8,6 +8,8 @@
 #define HEIGHT 0.05
 #define BASE 0.1
 #define NO_OF_ENTRIES 5000
+#define RESOLUTION 0.0125
+#define speedinus 62500
 extern float x_position;
 extern float y_position;
 static int index=0;
@@ -37,3 +39,4 @@ void VerticeUpdater(int direction);
 void GameRestart();
 float Getx_position();
 float Gety_position();
+void safeexit();

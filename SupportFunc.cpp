@@ -25,7 +25,7 @@ void* TimerRun(void*)
     cout<<"Timer Run Start "<<endl;
     while(Timercount<=NO_OF_ENTRIES)
     {
-        usleep(500000);
+        usleep(speedinus);
         VerticeHandler();
         Timercount++;
     }
@@ -44,19 +44,14 @@ void VerticeHandler()
     a3=Vertices[index][6];
     b3=Vertices[index][7];
     c3=Vertices[index][8];
-    cout<<"A1: "<<a1<<endl;
-    cout<<"B1: "<<b1<<endl;
-    cout<<"C1: "<<c1<<endl;
-    cout<<"A2: "<<a2<<endl;
-    cout<<"B2: "<<b2<<endl;
-    cout<<"C2: "<<c2<<endl;
-    cout<<"A3: "<<a3<<endl;
-    cout<<"B3: "<<b3<<endl;
-    cout<<"C3: "<<c3<<endl;
     SetVertices(a1,b1,c1,a2,b2,c2,a3,b3,c3);
     glutDisplayFunc(Snake::SnakegameOpenGL);
     cout<<"Vertice Handler index : "<<index<<endl;
     index++;
+    if(!isverticesset)
+    {
+        safeexit();
+    }
 }
 
 void VerticeUpdater(int direction)
@@ -116,7 +111,7 @@ void VerticeUpdater_Up()
                 Vertices[i][j] = y_position + HEIGHT;
             }
         }
-        y_position=y_position+0.05;
+        y_position=y_position+RESOLUTION;
     }
 }
 void VerticeUpdater_Down()
@@ -156,7 +151,7 @@ void VerticeUpdater_Down()
                 Vertices[i][j] = y_position - HEIGHT;
             }
         }
-        y_position=y_position-0.05;
+        y_position=y_position-RESOLUTION;
     }
 }
 
@@ -197,7 +192,7 @@ void VerticeUpdater_Left()
                 Vertices[i][j]=y_position+(BASE/2);
             }
         }
-        x_position=x_position -0.05;
+        x_position=x_position -RESOLUTION;
     }
 }
 
@@ -237,7 +232,7 @@ void VerticeUpdater_Right()
                Vertices[i][j]=y_position+(BASE/2);
            }
        }
-         x_position=x_position+0.05;
+         x_position=x_position+RESOLUTION;
    }
 }
 void GameRestart()
